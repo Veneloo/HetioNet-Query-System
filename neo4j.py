@@ -1,19 +1,21 @@
-#file to Handle Neo4j Logic
+#Axel Cazorla
+#3/14/2025
+#File to Upload Data onto Neo4j Database
 
 from py2neo import Graph, Node, Relationship
 
 # Connect to Neo4j
-graph = Graph("bolt://localhost:7689", auth=("neo4j", "your_password"))
+graph = Graph("bolt://localhost:7687", auth=("neo4j", "password"))
 print("Connected to Neo4j")
 
 # Load nodes from nodes.tsv
-with open("nodes.tsv", "r") as file:
-    lines = file.readlines()[1:]  # Skip header
-    for line in lines:
-        node_id, name, kind = line.strip().split("\t")
-        node = Node(kind, id=node_id, name=name)
-        graph.create(node)
-        print(f"Created node: {node_id}")
+#with open("nodes.tsv", "r") as file:
+#    lines = file.readlines()[1:]  # Skip header
+#    for line in lines:
+#        node_id, name, kind = line.strip().split("\t")
+#        node = Node(kind, id=node_id, name=name)
+#        graph.create(node)
+#        print(f"Created node: {node_id}")
 
 # Load relationships from edges.tsv
 with open("edges.tsv", "r") as file:
